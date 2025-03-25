@@ -6,7 +6,7 @@ import os
 def init():
     global model
     # Load model from file
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'model.joblib')
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'old_model.joblib')
     model = joblib.load(model_path)
 
 def run(raw_data):
