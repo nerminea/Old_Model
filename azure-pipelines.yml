@@ -1,29 +1,12 @@
-trigger:
-- main  # or your deployment branch
-
-pool:
-  vmImage: 'ubuntu-latest'
-
 steps:
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: '3.12'
-    addToPath: true
+    versionSpec: '3.10'
 
 - script: |
     python -m pip install --upgrade pip setuptools wheel
+  displayName: '✅ Install Build Tools'
+
+- script: |
     pip install -r requirements.txt
-  displayName: '✅ Install dependencies'
-
-# Optional: Run tests
-# - script: pytest tests/
-#   displayName: 'Run Tests'
-
-# Optional: Deploy to Azure App Service
-# Add this if deploying
-# - task: AzureWebApp@1
-#   inputs:
-#     azureSubscription: '<your-azure-connection-name>'
-#     appType: 'webApp'
-#     appName: '<your-app-name>'
-#     package: '$(System.DefaultWorkingDirectory)'
+  displayName: 'Install dependencies'
